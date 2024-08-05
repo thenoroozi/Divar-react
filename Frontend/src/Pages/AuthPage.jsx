@@ -11,7 +11,7 @@ function AuthPage(props) {
    return (
       <div>
          {step === 1 && <SendOtpForm setStep={setStep} setMobile={setMobile} mobile={mobile} />}
-         {step === 2 && <CheckOtpFrom />}
+         {step === 2 && <CheckOtpFrom code={code} setCode={setCode} mobile={mobile} setStep={setStep} />}
       </div>
    );
 }
