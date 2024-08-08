@@ -13,7 +13,8 @@ import { getProfile } from 'services/user';
 function Router() {
 
    const { data, isLoading, error } = useQuery(["profile"], getProfile);
-   console.log({ data, isLoading, error });
+   
+   if(isLoading) return <h3>در حال بارگزاری صفحه ...</h3>
 
    return (
       <Routes>
