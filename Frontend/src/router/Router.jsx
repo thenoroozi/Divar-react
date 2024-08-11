@@ -8,13 +8,14 @@ import DashboardPage from "pages/DashboardPage";
 import AdminPage from "pages/AdminPage";
 import PageNotFound from "pages/404";
 
+import Loader from 'components/modules/Loader';
 import { getProfile } from 'services/user';
 
 function Router() {
 
    const { data, isLoading, error } = useQuery(["profile"], getProfile);
 
-   if (isLoading) return <h3>در حال بارگزاری صفحه ...</h3>
+   if (isLoading) return <Loader />
 
    return (
       <Routes>
