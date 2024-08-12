@@ -43,15 +43,10 @@
 
 
    body {
-      @apply font-vazir-Regular bg-gray-50;
+      @apply font-vazir-Regular bg-gray-50 px-3 py-1 sm:px-5;
       margin: auto;
       max-width: 1400px;
       min-height: 100vh;
-      padding: 10px;
-   }
-
-   * {
-      padding: 0;
       margin: 0;
       box-sizing: border-box;
    }
