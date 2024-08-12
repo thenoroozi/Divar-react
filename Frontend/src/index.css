@@ -43,7 +43,7 @@
 
 
    body {
-      @apply font-vazir-Regular;
+      @apply font-vazir-Regular bg-gray-50;
       margin: auto;
       max-width: 1400px;
       min-height: 100vh;
@@ -54,5 +54,13 @@
       padding: 0;
       margin: 0;
       box-sizing: border-box;
+   }
+
+   input {
+      @apply border border-solid border-zinc-400 rounded;
+   }
+
+   button {
+      @apply bg-primary text-white rounded cursor-pointer;
    }
 }

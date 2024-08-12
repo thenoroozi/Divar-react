@@ -12,7 +12,12 @@ export default {
        "vazir-Bold": "Vazir Bold",
        "vazir-ExtraBold": "Vazir ExtraBold",
       },
-      extend: {},
+      extend: {
+         colors:{
+            "primary": "#a62626",
+            "primary-Hover": "#BD3636",
+         },
+      },
    },
    plugins: [],
 }
