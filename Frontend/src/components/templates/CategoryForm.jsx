@@ -7,7 +7,6 @@ function CategoryForm() {
    const [form, setForm] = useState({ name: "", slug: "", icon: "" })
 
    const { mutate, isLoading, error, data} = useMutation(addCategory)
-   console.log({isLoading, error, data});
 
    const changeHandler = (event) => {
       setForm({ ...form, [event.target.name]: event.target.value });
@@ -27,7 +26,7 @@ function CategoryForm() {
          [&_input]:block [&_input]:w-72 [&_input]:p-1 [&_input]:rounded [&_input]:mb-5
          [&_p]:w-72 [&_p]:mb-4 [&_p]:text-white [&_p]:p-1 [&_p]:text-center [&_p]:rounded'>
 
-         <h3 className='mb-8 border-b-2 border-primary w-fit pb-1'>دسته بندی جدید</h3>
+         <h3 className='mb-8 border-b-2 border-primary w-fit pb-1 font-semibold'>دسته بندی جدید</h3>
          <label htmlFor="name">اسم دسته بندی</label>
          <input type="text" name='name' id='name' />
          <label htmlFor="slug">اسلاگ</label>
