@@ -1,9 +1,9 @@
-import React from 'react';
+import CategoryForm from 'components/templates/CategoryForm';
 
-function AdminPage(props) {
+function AdminPage() {
    return (
       <div>
-         AdminPage
+        <CategoryForm />
       </div>
    );
 }
