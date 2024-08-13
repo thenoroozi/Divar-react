@@ -11,7 +11,7 @@ function Header() {
             <Link to="/">
                <img src="divar.svg" className='w-11 ml-5 sm:ml-10' />
             </Link>
-            <Link to="/" className='flex items-center text-gray-500 ml-1 [&>p]:mr-1 [&_p]:text-base'>
+            <Link to="/" className='flex items-center text-gray-500 ml-1 [&>p]:mr-1 [&_p]:text-sm'>
                <img src="home.svg" />
                <p>خانه</p>
             </Link>
@@ -27,7 +27,10 @@ function Header() {
                   <p>دیوار من</p>
                </span>
             </Link>
-            <Link to="/dashboard" className='bg-primary text-white h-10 w-20 leading-10 text-center rounded mr-2 sm:mr-8 transition-all hover:bg-primary-Hover'>
+            <Link 
+            to="/dashboard" 
+            className='bg-primary text-white h-9 w-16 text-sm leading-9 text-center rounded mr-2
+            sm:mr-8 transition-all hover:bg-primary-Hover sm:h-10 sm:w-20 sm:text-base sm:leading-10'>
                ثبت آگهی
             </Link>
          </div>
