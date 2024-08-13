@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { deleteCategory, getCategory } from "services/admin";
 import Loader from "components/modules/Loader";
+
+import { deleteCategory, getCategory } from "services/admin";
 
 
 const CategoryList = () => {
    const { data, isLoading } = useQuery(["get-categories"], getCategory);
-   console.log({ data, isLoading });
 
    return (
       <div className="mt-12 mb-16">
