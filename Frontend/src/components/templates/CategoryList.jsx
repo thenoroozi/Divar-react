@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import Loader from "components/modules/Loader";
@@ -6,7 +7,11 @@ import { deleteCategory, getCategory } from "services/admin";
 
 
 const CategoryList = () => {
-   const { data, isLoading } = useQuery(["get-categories"], getCategory);
+   const { refetch, data, isLoading } = useQuery(["get-categories"], getCategory);
+
+   useEffect(() => {
+      refetch();
+   }, [data])
 
    return (
       <div className="mt-12 mb-16">
@@ -21,7 +26,10 @@ const CategoryList = () => {
                      <h5 className="mr-2.5 text-sm w-32">{i.name}</h5>
                   </div>
                   <div className="flex items-center">
-                     <button onClick={() => deleteCategory(i._id)} className="py-0.5 px-2 bg-white text-primary border-2 border-primary transition-all hover:bg-primary hover:text-white">حذف</button>
+                     <button
+                        onClick={() => deleteCategory(i._id)}
+                        className="py-0.5 px-2 bg-white text-primary border-2 border-primary transition-all 
+                     hover:bg-primary hover:text-white focus:opacity-[0.8] focus:bg-primary-Hover focus:text-white focus:border-primary-Hover">حذف</button>
                      <p className="w-36 text-center text-primary mr-4">slug: {i.slug}</p>
                   </div>
                </div>)
