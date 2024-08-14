@@ -1,9 +1,10 @@
 import React from 'react';
+import AddPost from 'components/templates/AddPost';
 
 function DashboardPage(props) {
    return (
       <div>
-         DashboardPage
+        <AddPost />
       </div>
    );
 }
