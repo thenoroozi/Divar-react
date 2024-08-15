@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import { getCategory } from 'services/admin';
+import { getCookie } from 'utils/cookie';
+import axios from 'axios';
 
 const AddPost = () => {
    const { data } = useQuery(["get-categories"], getCategory);
@@ -25,7 +27,21 @@ const AddPost = () => {
 
    const submitHandler = (event) => {
       event.preventDefault();
-      console.log(form);
+      const formData = new FormData();
+
+      for (let i in form) {
+         formData.append(i, form[i]);
+      }
+
+      const accessToken = getCookie("accessToken");
+      axios.post(`${import.meta.env.VITE_BASE_URL}post/create`, formData, {
+         headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `bearer ${accessToken}`,
+         }
+      })
+      .then(res => console.log(res))
+      .catch(error => console.log(error))
 
    }
    return (
