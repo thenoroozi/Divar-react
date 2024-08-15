@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 import { getCategory } from 'services/admin';
 import { getCookie } from 'utils/cookie';
-import axios from 'axios';
 
 const AddPost = () => {
-   const { data } = useQuery(["get-categories"], getCategory);
+   const { data ,isLoading } = useQuery(["get-categories"], getCategory);
    const [form, setForm] = useState({
       title: "",
       content: "",
@@ -40,8 +41,18 @@ const AddPost = () => {
             Authorization: `bearer ${accessToken}`,
          }
       })
-      .then(res => console.log(res))
-      .catch(error => console.log(error))
+         .then(res => {
+            setForm({
+               title: "",
+               content: "",
+               category: "",
+               city: "",
+               amount: null,
+               images: null,
+            });
+            toast.success(res.data.message);
+         })
+         .catch(error => toast.error("مشکلی پیش آمده است!"))
 
    }
    return (
@@ -73,7 +84,8 @@ const AddPost = () => {
          <label htmlFor="images">عکس</label>
          <input type="file" name="images" id="images" />
          <button
-            className='px-6 py-1.5 transition-all hover:bg-primary-Hover'
+            disabled={isLoading}
+            className='px-6 py-1.5 transition-all hover:bg-primary-Hover disabled:opacity-[0.8]'
             type='submit'>ایجاد</button>
       </form>
    );
