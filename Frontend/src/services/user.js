@@ -5,4 +5,6 @@ const getProfile = () => api.get("user/whoami")
 
 const getPost = () => api.get("post/my")
 
-export { getProfile, getPost };
+const deletePost = id => api.delete(`post/delete/${id}`)
+
+export { getProfile, getPost,deletePost };

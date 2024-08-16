@@ -1,14 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Loader from 'components/modules/Loader';
-import { getPost } from 'services/user';
+import { deletePost, getPost } from 'services/user';
 import { sp } from 'utils/numbers';
 
 function PostList() {
    const baseURL = import.meta.env.VITE_BASE_URL;
-   const { data, isLoading } = useQuery(["my-post-list"], getPost);
+   const { refetch, data, isLoading } = useQuery(["my-post-list"], getPost);
 
+   useEffect(() => {
+      refetch()
+   }, [data])
    return (
       <div>
          <h3 className='my-8 border-b-2 border-primary w-fit pb-1 font-semibold'>آگهی‌های من</h3>
@@ -25,6 +28,9 @@ function PostList() {
                         <div className='w-full flex items-center justify-between'>
                            <p>{new Date(post.createdAt).toLocaleDateString("fa-IR")}</p>
                            <span className='w-36 text-sm text-center'>{sp(post.amount)} تومان</span>
+                           <button
+                              onClick={() => deletePost(post._id)}
+                              className='px-1.5 py-0.5 hover:bg-primary-Hover focus:opacity-[0.8]'>حذف</button>
                         </div>
                      </div>
                   </div>)) :
