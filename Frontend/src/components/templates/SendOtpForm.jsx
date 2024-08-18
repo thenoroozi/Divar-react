@@ -1,17 +1,25 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { sendOtp } from 'services/auth';
+import { p2e } from 'utils/numbers';
 
 function SendOtpForm({ mobile, setMobile, setStep }) {
+   const REG=/^09(1[0-9]|3[0-9])[0-9]{7}/;
 
    const submitHandler = async (event) => {
       event.preventDefault();
-
-      if (mobile.length !== 11) return;
+     
+      if (!REG.test(mobile)) {
+         toast.error("لطفا شماره موبایل درست وارد کنید!");
+         return;
+      };
 
       const { response, error } = await sendOtp(mobile);
-      if (response) setStep(2);
-      if (error) console.log(error.response.data.message);
-      console.log({ response, error });
+      if (response) {
+         toast.success("کد با موفقیت ارسال شد")
+         setStep(2);
+      };
+      if (error) toast.error(error.response.data.message);
    }
    return (
       <form 
@@ -28,7 +36,7 @@ function SendOtpForm({ mobile, setMobile, setStep }) {
             id='input'
             placeholder='شماره موبایل'
             value={mobile}
-            onChange={e => setMobile(e.target.value)}
+            onChange={e => setMobile(p2e(e.target.value))}
             className='mt-2.5 mb-5 p-1.5 outline-none'/>
          <button 
          className='w-28 py-1 px-2.5 hover:bg-primary-Hover'
