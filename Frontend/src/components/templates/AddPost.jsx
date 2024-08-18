@@ -7,7 +7,7 @@ import { getCategory } from 'services/admin';
 import { getCookie } from 'utils/cookie';
 
 const AddPost = () => {
-   const { data ,isLoading } = useQuery(["get-categories"], getCategory);
+   const { data, isLoading } = useQuery(["get-categories"], getCategory);
    const [form, setForm] = useState({
       title: "",
       content: "",
@@ -19,6 +19,7 @@ const AddPost = () => {
 
    const changeHandler = (event) => {
       const name = event.target.name;
+
       if (name !== "images") {
          setForm({ ...form, [name]: event.target.value });
       } else {
@@ -83,7 +84,7 @@ const AddPost = () => {
             ))}
          </select>
          <label htmlFor="images">عکس</label>
-         <input type="file" name="images" id="images" />
+         <input type="file" name="images" id="images" accept='.jpg,.image' />
          <button
             disabled={isLoading}
             className='w-fit px-6 py-1.5 transition-all hover:bg-primary-Hover disabled:opacity-[0.8]'
