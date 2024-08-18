@@ -22,7 +22,7 @@ function PostList() {
             <div className='w-full grid grid-cols-1 lg:grid-cols-2 md:gap-3 xl:grid-cols-3'>
                {data ? data.data.posts.map(post => (
                   <div
-                     className='min-w-72 h-32 flex items-center border border-zinc-400 rounded my-2 mx-auto p-1.5 overflow-auto no-scrollbar [&_p]:text-xs'
+                     className='min-w-72 h-32 bg-white flex items-center shadow-md rounded-md my-2 mx-auto p-1.5 overflow-auto no-scrollbar [&_p]:text-xs'
                      key={post._id}>
                      <img src={`${baseURL}${post.images[0]}`} className='w-32 h-full rounded ml-3' />
                      <div className='w-40 h-full flex flex-col justify-between'>

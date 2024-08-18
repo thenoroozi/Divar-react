@@ -60,7 +60,7 @@ const AddPost = () => {
       <form
          onSubmit={submitHandler}
          onChange={changeHandler}
-         className='w-fit flex flex-col sm:pl-4 sm:ml-4 sm:border-l-2 sm:border-primary
+         className='w-fit flex flex-col sm:pl-4 sm:ml-4 
             [&_label]:w-fit [&_label]:text-sm [&_label]:mb-2
             [&_input]:w-72 [&_input]:p-1 [&_input]:mb-5
             [&_textarea]:w-72 [&_textarea]:h-24 [&_textarea]:mb-5 [&_textarea]:border [&_textarea]:border-zinc-400 [&_textarea]:rounded [&_textarea]:p-1
