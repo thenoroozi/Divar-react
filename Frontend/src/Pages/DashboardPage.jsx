@@ -4,7 +4,7 @@ import PostList from 'components/templates/PostList';
 
 function DashboardPage(props) {
    return (
-      <div>
+      <div className='flex flex-col items-center sm:flex-row sm:items-start'>
         <AddPost />
         <PostList />
       </div>

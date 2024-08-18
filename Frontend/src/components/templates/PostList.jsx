@@ -9,25 +9,30 @@ function PostList() {
    const baseURL = import.meta.env.VITE_BASE_URL;
    const { refetch, data, isLoading } = useQuery(["my-post-list"], getPost);
 
+   
    useEffect(() => {
       refetch()
+
    }, [data])
+
    return (
       <div>
-         <h3 className='my-8 border-b-2 border-primary w-fit pb-1 font-semibold'>آگهی‌های من</h3>
+         <h3 className='my-8 border-b-2 border-primary w-fit pb-1 font-semibold sm:my-0 sm:mb-8'>آگهی‌های من</h3>
          {isLoading ? <Loader /> :
-            <div className='w-full grid grid-cols-1 md:grid-cols-2 md:gap-3 lg:grid-cols-3'>
+            <div className='w-full grid grid-cols-1 lg:grid-cols-2 md:gap-3 xl:grid-cols-3'>
                {data ? data.data.posts.map(post => (
                   <div
-                     className='min-w-full h-32 flex items-center border border-zinc-400 rounded my-2 mx-auto p-1.5 [&_p]:text-xs'
+                     className='min-w-72 h-32 flex items-center border border-zinc-400 rounded my-2 mx-auto p-1.5 overflow-auto no-scrollbar [&_p]:text-xs'
                      key={post._id}>
                      <img src={`${baseURL}${post.images[0]}`} className='w-32 h-full rounded ml-3' />
-                     <div className='w-full h-full flex flex-col justify-between'>
+                     <div className='w-40 h-full flex flex-col justify-between'>
                         <h4 className='font-semibold line-clamp-1'>{post.options.title}</h4>
                         <p className='text-justify pl-4 line-clamp-2'>{post.options.content}</p>
                         <div className='w-full flex items-center justify-between'>
-                           <p>{new Date(post.createdAt).toLocaleDateString("fa-IR")}</p>
-                           <span className='w-36 text-sm text-center'>{sp(post.amount)} تومان</span>
+                           <div className='text-xs text-gray-500'>
+                              <p>{new Date(post.createdAt).toLocaleDateString("fa-IR")}</p>
+                              <span className='w-36 text-center'>{sp(post.amount)} تومان</span>
+                           </div>
                            <button
                               onClick={() => deletePost(post._id)}
                               className='px-1.5 py-0.5 hover:bg-primary-Hover focus:opacity-[0.8]'>حذف</button>
