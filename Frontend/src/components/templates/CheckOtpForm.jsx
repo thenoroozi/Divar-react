@@ -1,10 +1,12 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 import { checkOtp } from 'services/auth';
 import { getProfile } from 'services/user';
 import { setCookie } from 'utils/cookie';
+import { p2e } from 'utils/numbers';
 
 function CheckOtpForm({ code, setCode, setStep, mobile }) {
    const navigate = useNavigate();
@@ -16,11 +18,14 @@ function CheckOtpForm({ code, setCode, setStep, mobile }) {
 
       const { response, error } = await checkOtp(mobile, code);
 
-      if (response) setCookie(response.data);
+      if (response) {
+         setCookie(response.data);
+         toast.success("با موفقیت وارد حساب کاربری خود شدید")
+      };
       navigate("/");
       refetch();
 
-      if (error) console.log(error.response.data.message);
+      if (error) toast.error(error.response.data.message) ;
    }
    return (
       <form
@@ -35,7 +40,7 @@ function CheckOtpForm({ code, setCode, setStep, mobile }) {
             id='input'
             placeholder='کد تایید'
             value={code}
-            onChange={e => setCode(e.target.value)}
+            onChange={e => setCode(p2e(e.target.value))}
             className='mt-2.5 mb-5 p-1.5 outline-none' />
          <div className='w-full flex justify-between items-center'>
             <button
