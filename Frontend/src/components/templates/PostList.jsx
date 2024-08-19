@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import Loader from 'components/modules/Loader';
 import { deletePost, getPost } from 'services/user';
 import { sp } from 'utils/numbers';
+import { Link } from 'react-router-dom';
 
 function PostList() {
    const baseURL = import.meta.env.VITE_BASE_URL;
@@ -29,7 +30,9 @@ function PostList() {
                      key={post._id}>
                      <img src={`${baseURL}${post.images[0]}`} className='w-32 h-full rounded ml-3' />
                      <div className='w-40 h-full flex flex-col justify-between'>
-                        <h4 className='font-semibold line-clamp-1'>{post.options.title}</h4>
+                        <h4 className='font-semibold line-clamp-1'>
+                           <Link to={`/post/${post._id}`}>{post.options.title}</Link>
+                        </h4>
                         <p className='text-justify pl-4 line-clamp-2'>{post.options.content}</p>
                         <div className='w-full flex items-center justify-between'>
                            <div className='text-xs text-gray-500'>

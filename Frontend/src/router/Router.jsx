@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import AuthPage from "pages/AuthPage";
 import HomePage from "pages/HomePage";
 import DashboardPage from "pages/DashboardPage";
+import PostDetails from 'pages/PostDetails';
 import AdminPage from "pages/AdminPage";
 import PageNotFound from "pages/404";
 
@@ -37,6 +38,7 @@ function Router() {
             path="/admin"
             element={data && data.data.role === "ADMIN" ? <AdminPage /> : <Navigate to="/" />}
          />
+         <Route path="/post/:id" element={<PostDetails />} />
          <Route path="/*" element={<PageNotFound />} />
       </Routes>
    );
