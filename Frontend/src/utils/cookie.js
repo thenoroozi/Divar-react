@@ -9,4 +9,9 @@ const getCookie = (cookieName) => {
       .find(token => token.trim().split("=")[0] === cookieName)
       ?.split("=")[1];
 }
-export { setCookie, getCookie };
+
+const deleteCookie = () => {
+   document.cookie = `accessToken=; max-age=0`;
+   document.cookie = `refreshToken=; max-age=0`;
+}
+export { setCookie, getCookie, deleteCookie };
