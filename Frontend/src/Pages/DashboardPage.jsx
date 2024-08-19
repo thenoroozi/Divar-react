@@ -6,12 +6,15 @@ import PostList from 'components/templates/PostList';
 import { getProfile } from 'services/user';
 
 function DashboardPage() {
-   const { data } = useQuery(["profile"], getProfile);
+   const { data } = useQuery({
+      queryKey: ["profile"],
+      queryFn: getProfile
+   });
 
    return (
       <div>
          <div className='mb-4 pb-3 border-b-2 border-primary'>
-         <h3 className='mb-5 border-b-2 border-primary w-fit pb-1 font-semibold'>مشخصات کاربری</h3>
+            <h3 className='mb-5 border-b-2 border-primary w-fit pb-1 font-semibold'>مشخصات کاربری</h3>
             <ul className='flex flex-col flex-wrap items-center justify-evenly space-y-1 md:flex-row
          [&_li]:flex [&_li]:items-center [&_li]:mx-5 [&_h4]:font-semibold [&_h4]:ml-2'>
                <li>

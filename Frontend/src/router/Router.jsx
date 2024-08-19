@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useQuery } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 
 import AuthPage from "pages/AuthPage";
 import HomePage from "pages/HomePage";
@@ -13,9 +14,13 @@ import { getProfile } from 'services/user';
 
 function Router() {
 
-   const { data, isLoading, error } = useQuery(["profile"], getProfile);
+   const { data, isLoading, error } = useQuery({
+      queryKey: ["profile"],
+      queryFn: getProfile
+   });
 
    if (isLoading) return <Loader />
+   if(error) return toast.error(error.message)
 
    return (
       <Routes>

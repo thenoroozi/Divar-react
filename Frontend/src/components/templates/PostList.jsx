@@ -7,13 +7,16 @@ import { sp } from 'utils/numbers';
 
 function PostList() {
    const baseURL = import.meta.env.VITE_BASE_URL;
-   const { refetch, data, isLoading } = useQuery(["my-post-list"], getPost);
+   const { refetch, data, isLoading } = useQuery({
+      queryKey: ["my-post-list"],
+      queryFn: getPost
+   });
 
-   
+
    useEffect(() => {
       refetch()
 
-   }, [data])
+   }, [])
 
    return (
       <div>

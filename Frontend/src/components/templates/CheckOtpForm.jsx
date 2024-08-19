@@ -10,7 +10,10 @@ import { p2e } from 'utils/numbers';
 
 function CheckOtpForm({ code, setCode, setStep, mobile }) {
    const navigate = useNavigate();
-   const { refetch } = useQuery(["profile"], getProfile);
+   const { refetch } = useQuery({
+      queryKey: ["profile"],
+      queryFn: getProfile
+   });
    const submitHandler = async (event) => {
       event.preventDefault();
 
@@ -25,7 +28,7 @@ function CheckOtpForm({ code, setCode, setStep, mobile }) {
       navigate("/");
       refetch();
 
-      if (error) toast.error(error.response.data.message) ;
+      if (error) toast.error(error.response.data.message);
    }
    return (
       <form

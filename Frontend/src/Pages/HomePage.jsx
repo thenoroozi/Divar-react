@@ -9,12 +9,18 @@ import { getAllPost } from 'services/user';
 import { getCategory } from 'services/admin';
 
 function HomePage() {
-   const { refetch: refetchPosts, data: posts, isLoading: postLoading } = useQuery(["my-post-list"], getAllPost);
-   const { data: categories, isLoading: categoryLoading } = useQuery(["get-categories"], getCategory);
+   const { refetch: refetchPosts, data: posts, isLoading: postLoading } = useQuery({
+      queryKey: ["my-post-list"],
+      queryFn: getAllPost
+   });
+   const { data: categories, isLoading: categoryLoading } = useQuery({
+      queryKey: ["get-categories"],
+      queryFn: getCategory
+   });
 
    useEffect(() => {
       refetchPosts()
-   }, [posts])
+   }, [])
 
    return (
       <>

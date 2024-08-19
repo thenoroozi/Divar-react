@@ -8,8 +8,9 @@ function CategoryForm() {
    const [showMessage, setShowMessage] = useState(false);
    const [form, setForm] = useState({ name: "", slug: "", icon: "" })
 
-   const { mutate, isLoading, error, data } = useMutation(addCategory, {
-      onSuccess: () => queryClient.invalidateQueries("get-categories"),
+   const { mutate, isLoading, error, data } = useMutation({
+      mutationFn: addCategory,
+      onSuccess: () => queryClient.invalidateQueries({ queryKey: "get-categories" }),
    });
 
    const changeHandler = (event) => {
@@ -28,11 +29,11 @@ function CategoryForm() {
       setShowMessage(true);
    }
 
-   useEffect(()=>{
+   useEffect(() => {
       setTimeout(() => {
          setShowMessage(false);
       }, 3000);
-   },[showMessage]);
+   }, [showMessage]);
 
    return (
       <form

@@ -7,7 +7,10 @@ import { getCategory } from 'services/admin';
 import { getCookie } from 'utils/cookie';
 
 const AddPost = () => {
-   const { data, isLoading } = useQuery(["get-categories"], getCategory);
+   const { data, isLoading } = useQuery({
+      queryKey: ["get-categories"],
+      queryFn: getCategory
+   });
    const [form, setForm] = useState({
       title: "",
       content: "",

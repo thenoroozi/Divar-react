@@ -7,7 +7,10 @@ import { deleteCategory, getCategory } from "services/admin";
 
 
 const CategoryList = () => {
-   const { refetch, data, isLoading } = useQuery(["get-categories"], getCategory);
+   const { refetch, data, isLoading } = useQuery({
+      queryKey: ["get-categories"],
+      queryFn: getCategory
+   });
 
    useEffect(() => {
       refetch();
