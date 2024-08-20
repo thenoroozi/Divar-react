@@ -59,6 +59,6 @@ const PostDetails = () => {
             </div>)}
       </>
    );
-};
+}; 
 
 export default PostDetails;
