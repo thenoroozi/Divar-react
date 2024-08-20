@@ -18,19 +18,24 @@ function HomePage() {
       queryKey: ["get-categories"],
       queryFn: getCategory
    });
+   const [displayed, setDisplayed] = useState([])
    const [search, setSearch] = useState("")
+   const [query, setQuery] = useState({})
+   console.log(query);
+
 
    useEffect(() => {
       refetchPosts()
+      setDisplayed(posts)
    }, [])
 
    return (
       <>
-         <SearchBox search={search} setSearch={setSearch} />
+         <SearchBox search={search} setSearch={setSearch} setQuery={setQuery} query={query} />
          {postLoading || categoryLoading ? <Loader /> :
             <div className='flex flex-col items-center sm:flex-row sm:items-start'>
-               <SideBar categories={categories} />
-               <Main posts={posts} />
+               <SideBar categories={categories} setQuery={setQuery} query={query} />
+               <Main posts={displayed} />
             </div>}
       </>
    );
