@@ -5,25 +5,29 @@ import toast from 'react-hot-toast';
 
 import Loader from 'components/modules/Loader';
 import { getPostDetails } from 'services/user';
+import { getCategory } from 'services/admin';
 import { sp } from 'utils/numbers';
 
 const PostDetails = () => {
    const { id } = useParams();
-   const { data, isLoading, error } = useQuery({
+   const { data, isLoading: postLoading, error } = useQuery({
       queryKey: ["post-details", id],
       queryFn: getPostDetails
-   })
+   });
+   const { data: categories, isLoading: categoryLoading } = useQuery({
+      queryKey: ["get-categories"],
+      queryFn: getCategory
+   });
    const baseURL = import.meta.env.VITE_BASE_URL;
-
    const post = data && data.data.post;
+   const category =categories && categories.data.find(i => i._id === post?.category);
 
+   
    if (error) return toast.error("مشکلی پیش آمده است!");
-
-
 
    return (
       <>
-         {isLoading ? <Loader /> :
+         {postLoading || categoryLoading ? <Loader /> :
             (<div className='w-full xl:w-[1100px] bg-white mt-8 mx-auto p-4 flex flex-col md:flex-row-reverse rounded-lg shadow-md'>
                <img className='w-96 h-72 sm:h-80 rounded-lg'
                   src={`${baseURL}${post.images[0]}`}
@@ -40,12 +44,12 @@ const PostDetails = () => {
                      <p>{new Date(post.createdAt).toLocaleDateString("fa-IR")}</p>
                   </div>
                   <div>
-                     <img src="/price.png"/>
+                     <img src="/price.png" />
                      <span className=' text-start'>{sp(post.amount)} تومان</span>
                   </div>
                   <div>
                      <span className='font-semibold ml-2'>دسته بندی: </span>
-                     <span>{post.category}</span>
+                     <span>{category?.name || "---"}</span>
                   </div>
                   <div>
                      <img src="/phone.png" />
@@ -59,6 +63,6 @@ const PostDetails = () => {
             </div>)}
       </>
    );
-}; 
+};
 
 export default PostDetails;
