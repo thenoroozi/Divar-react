@@ -9,7 +9,7 @@ const Main = ({ posts }) => {
    return (
       <div className='mt-5 mb-5 p-5 w-full bg-white grid grid-cols-1 gap-2 rounded-md shadow
       sm:mt-3 lg:grid-cols-2 xl:grid-cols-3'>
-         {posts?.data.posts.map((post) => (
+         {posts?.map((post) => (
             <div
                className='min-w-72 h-32 flex items-center border border-zinc-400 rounded my-2 mx-auto p-1.5 overflow-auto no-scrollbar [&_p]:text-xs'
                key={post._id}>
