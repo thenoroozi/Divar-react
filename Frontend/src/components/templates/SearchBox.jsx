@@ -1,10 +1,11 @@
 import React from 'react';
+import { createQueryObject } from 'utils/search';
 
-const SearchBox = ({ search, setSearch, query, setQuery }) => {
+const SearchBox = ({ search, setSearch, setQuery }) => {
 
    const submitHandler = (event) => {
       event.preventDefault();
-      setQuery({ ...query, search })
+      setQuery(query => createQueryObject(query, { search }))
    }
    return (
       <form className='p-1.5 flex items-center justify-between w-96 mx-auto bg-white rounded-md shadow'
