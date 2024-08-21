@@ -1,7 +1,7 @@
 import React from 'react';
 import { createQueryObject } from 'utils/search';
 
-const SideBar = ({ categories, setQuery }) => {
+const SideBar = ({ categories, query, setQuery }) => {
 
    const categoryHandler = (event) => {
       const { tagName } = event.target;
@@ -23,7 +23,7 @@ const SideBar = ({ categories, setQuery }) => {
                <p className='font-extralight mr-2 text-gray-600'>همه‌ی آگهی‌ها</p>
             </li>
             {categories?.data.map((category) => (
-               <li key={category._id} className='flex my-2 mx-0 px-1 py-2 cursor-pointer rounded-md transition-all [&_p]:hover:text-primary-Hover hover:bg-red-100 '>
+               <li key={category._id} className={`${query?.categoryName === category.name && "[&_p]:text-primary-Hover bg-red-100 "} flex my-2 mx-0 px-1 py-2 cursor-pointer rounded-md transition-all [&_p]:hover:text-primary-Hover hover:bg-red-100`}>
                   <img src={`${category.icon}.svg`} />
                   <p className='font-extralight mr-2 text-gray-600'>{category.name}</p>
                </li>

@@ -36,9 +36,7 @@ function HomePage() {
    useEffect(() => {
       setSearchParams(query);
       setSearch(query.search || "")
-      
-      console.log(query);
-      console.log(posts);
+     
       let finalPosts = searchPosts(posts, query.search)
       finalPosts = filterPosts(finalPosts, categories, query.categoryName);
       setDisplayed(finalPosts)
