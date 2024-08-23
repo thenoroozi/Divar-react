@@ -20,7 +20,7 @@ function Router() {
       queryFn: getProfile
    });
 
-   if (isLoading) return <Loader />
+   if (isLoading) return <Loader text={true} />
    if(error) return toast.error(error.message)
 
    return (

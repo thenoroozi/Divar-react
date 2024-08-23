@@ -45,7 +45,7 @@ function HomePage() {
    return (
       <>
          <SearchBox search={search} setSearch={setSearch} setQuery={setQuery} query={query} />
-         {postLoading || categoryLoading ? <Loader /> :
+         {postLoading || categoryLoading ? <Loader text={false} /> :
             <div className='flex flex-col items-center sm:flex-row sm:items-start'>
                <SideBar categories={categories} setQuery={setQuery} query={query} />
                <Main posts={displayed || posts?.data.posts} />

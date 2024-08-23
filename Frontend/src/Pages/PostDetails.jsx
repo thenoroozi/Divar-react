@@ -27,7 +27,7 @@ const PostDetails = () => {
 
    return (
       <>
-         {postLoading || categoryLoading ? <Loader /> :
+         {postLoading || categoryLoading ? <Loader text={true} /> :
             (<div className='w-full xl:w-[1100px] bg-white mt-8 mx-auto p-4 flex flex-col md:flex-row-reverse rounded-lg shadow-md'>
                <img className='w-96 h-72 sm:h-80 rounded-lg'
                   src={`${baseURL}${post.images[0]}`}

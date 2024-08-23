@@ -22,7 +22,7 @@ function PostList() {
    return (
       <div>
          <h3 className='my-8 border-b-2 border-primary w-fit pb-1 font-semibold sm:my-0 sm:mb-8'>آگهی‌های من</h3>
-         {isLoading ? <Loader /> :
+         {isLoading ? <Loader text={false} /> :
             <div className='w-full grid grid-cols-1 lg:grid-cols-2 md:gap-3 xl:grid-cols-3'>
                {data ? data.data.posts.map(post => (
                   <div

@@ -20,7 +20,7 @@ const CategoryList = () => {
       <div className="mt-12 mb-16">
          <h3 className="mb-8 border-b-2 border-primary w-fit pb-1 font-semibold">لیست دسته بندی ها</h3>
          {isLoading ?
-            <Loader /> :
+            <Loader text={false} /> :
             data.data.map(i =>
                <div className="flex justify-between my-5 p-2 border-2 border-slate-200 rounded"
                   key={i._id}>
