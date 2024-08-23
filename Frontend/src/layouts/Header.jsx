@@ -52,10 +52,16 @@ function Header() {
                   <img src="dashboard.png" />
                   <li>داشبورد</li>
                </Link>
-               <li onClick={logoutHandler} className='flex items-center p-1 rounded cursor-pointer hover:bg-gray-200'>
-                  <img src="logout.png" />
-                  <p>خروج</p>
-               </li>
+               {data ?
+                  <li onClick={logoutHandler} className='flex items-center p-1 rounded cursor-pointer hover:bg-gray-200'>
+                     <img src="logout.png" />
+                     <p>خروج</p>
+                  </li> :
+                  <Link to="/auth" className='flex items-center mb-2 p-1 rounded hover:bg-gray-200'>
+                     <img src="enter.png" />
+                     <p>ورود</p>
+                  </Link>
+               }
             </ul>
             <Link
                to="/dashboard"
