@@ -15,9 +15,14 @@ function PostList() {
 
 
    useEffect(() => {
-      refetch()
+      const fetch=setInterval(() => {
+         refetch()
+      }, 3000);
+      setTimeout(() => {
+         clearInterval(fetch)
+      }, 4000);
 
-   }, [])
+   }, [data])
 
    return (
       <div>
