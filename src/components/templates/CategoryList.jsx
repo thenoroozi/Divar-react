@@ -17,7 +17,7 @@ const CategoryList = () => {
    }, [data])
 
    return (
-      <div className="mt-12 mb-16">
+      <div className="w-full mt-12 mb-16 md:mt-0 md:mb-0 md:mr-4 md:pr-4 md:border-r-2 md:border-primary">
          <h3 className="mb-8 border-b-2 border-primary w-fit pb-1 font-semibold">لیست دسته بندی ها</h3>
          {isLoading ?
             <Loader text={false} /> :

@@ -39,8 +39,8 @@ function CategoryForm() {
       <form
          onChange={changeHandler}
          onSubmit={submitHandler}
-         className='[&_label]:block [&_label]:text-sm [&_label]:mb-1 
-         [&_input]:block [&_input]:w-72 [&_input]:p-1 [&_input]:rounded [&_input]:mb-5
+         className='flex flex-col items-start [&_label]:w-72 [&_label]:text-sm [&_label]:mb-1 
+         [&_input]:w-72 [&_input]:p-1 [&_input]:rounded [&_input]:mb-5
          [&_p]:w-72 [&_p]:mb-4 [&_p]:text-white [&_p]:p-1 [&_p]:text-center [&_p]:rounded'>
 
          <h3 className='mb-8 border-b-2 border-primary w-fit pb-1 font-semibold'>دسته بندی جدید</h3>

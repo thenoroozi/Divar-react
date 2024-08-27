@@ -3,9 +3,9 @@ import CategoryList from 'components/templates/CategoryList';
 
 function AdminPage() {
    return (
-      <div>
-         <CategoryList />
+      <div className='flex flex-col md:flex-row'>
          <CategoryForm />
+         <CategoryList />
       </div>
    );
 }
